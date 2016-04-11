@@ -5,8 +5,12 @@
     "browser": true,
     "node": true
   },
+  plugins: [
+    'html'
+  ],
   "parser": "babel-eslint",
   "ecmaFeatures": {
+    "jsx": false,
     # lambda表达式
     "arrowFunctions": true,
     # 解构赋值

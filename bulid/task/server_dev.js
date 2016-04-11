@@ -5,7 +5,8 @@ export default (_opt) => {
              eslint = _opt.pluging.eslint,
               gutil = _opt.pluging.gutil,
             nodemon = _opt.pluging.nodemon,
-        runSequence = _opt.pluging.runSequence
+        runSequence = _opt.pluging.runSequence,
+   eslint_formatter = _opt.pluging.eslint_formatter
 
     const server = _opt.path.server
     const client = _opt.path.client
@@ -37,7 +38,7 @@ export default (_opt) => {
     gulp.task('server_eslint', () => {
         return gulp.src(server + '/**/*.js')
                    .pipe(eslint())
-                   .pipe(eslint.format())
+                   .pipe(eslint.format(eslint_formatter))
     })
 
     /**

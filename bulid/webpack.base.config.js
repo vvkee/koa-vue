@@ -105,6 +105,9 @@ module.exports = (options) => {
                 js: 'babel!eslint'
             }
         },
+        eslint: {
+          formatter: require('eslint-friendly-formatter')
+        },
         plugins: [
             new CommonsChunkPlugin({
                 name: 'vender'

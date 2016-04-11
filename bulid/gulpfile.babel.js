@@ -9,6 +9,7 @@ import     nodemon from 'gulp-nodemon'
 import runSequence from 'gulp-sequence'
 
 import      eslint from 'gulp-eslint'
+import eslint_formatter from 'eslint-friendly-formatter'
 import      uglify from 'gulp-uglify'
 import      concat from 'gulp-concat'
 
@@ -41,6 +42,7 @@ task.serverDev({
                 del: del,
               gutil: gutil,
              eslint: eslint,
+   eslint_formatter: eslint_formatter,
             nodemon: nodemon,
         runSequence: runSequence
     },
