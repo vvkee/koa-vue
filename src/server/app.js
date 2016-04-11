@@ -44,4 +44,4 @@ app
   .use(config.router.routes())
   .use(config.router.allowedMethods())
 
-app.listen(3030)
+app.listen(3377)

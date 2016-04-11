@@ -15,9 +15,10 @@ let     UglifyJsPlugin = webpack.optimize.UglifyJsPlugin,
     CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
 
 let rootPath = path.join(process.cwd(), '..')
+console.log('rootPath', rootPath);
 let      srcDir = path.resolve(rootPath, path.join(rootPath, '/src/client')),
     nodeModPath = path.resolve(rootPath, path.join(rootPath, '/node_modules')),
-         assets = 'assets/'
+         assets = path.join(rootPath, '/assets/');
         // pathMap = require('./src/pathmap.json')
 
 let plugins = []

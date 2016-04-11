@@ -53,7 +53,7 @@ export default (_opt) => {
 
     // html任务
     gulp.task('copy_html', () => {
-        return gulp.src(client + '/**/pages/**/*.html')
+        return gulp.src(client + '/*.html')
                    .pipe(rename((file_path) => {
                        file_path.dirname = file_path.dirname.replace(/\/pages/, '');
                    }))
@@ -70,10 +70,8 @@ export default (_opt) => {
 
 
     gulp.task('client_watch', () => {
-        gulp.watch(client + '/**/pages/**/*.html', ['copy_html'])
-        gulp.watch(client + '/**/static/**/*', ['webpack_dev'])
-        gulp.watch(client + '/**/widget/**/*', ['webpack_dev'])
-        gulp.watch(client + '/**/module/**/*', ['webpack_dev'])
-        gulp.watch(client + '/**/static/image/**/*', ['copy_img'])
+        gulp.watch(client + '/*.html', ['copy_html'])
+        gulp.watch(client + '/**/*.js', ['webpack_dev'])
+        gulp.watch(client + '/**/*.vue', ['webpack_dev'])
     })
 }
