@@ -63,7 +63,7 @@ module.exports = (options) => {
         },
         resolve: {
             root: [srcDir, './node_modules'],
-            extensions: ['', '.js','.vue', '.css', '.less', '.tpl', '.png', '.jpg']
+            extensions: ['', '.vue', '.js', '.css', '.less', '.tpl', '.png', '.jpg']
         },
         resolveLoader: {
             root: path.join(__dirname, 'node_modules')
@@ -92,7 +92,7 @@ module.exports = (options) => {
                     ]
                 },
                 { test: /\.(woff|eot|ttf)$/i, loader: 'url?limit=10000&name=fonts/[hash:8].[name].[ext]' },
-                { test: /\.(tpl|ejs)$/, loader: 'ejs'},
+                { test: /\.html$/, loader: 'vue-html'},
                 { test: /\.css$/, loader: cssLoader},
                 { test: /\.less$/, loader: lessLoader},
                 { test: /\.(woff|woff2|ttf|eot|svg|otf)(\?t=[0-9]*(\#[a-zA-Z]*)?)?$/,   loader: "file"},
@@ -101,9 +101,7 @@ module.exports = (options) => {
             ]
         },
         vue: {
-            loaders: {
-                js: 'babel!eslint'
-            }
+          loaders: ['vue-style-loader', 'less-loader', 'css-loader', 'babel?presets[]=es2015,presets[]=stage-3']
         },
         eslint: {
           formatter: require('eslint-friendly-formatter')
