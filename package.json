@@ -4,7 +4,7 @@
   "description": "crm",
   "main": "index.js",
   "scripts": {
-    "start": "sudo npm install && sudo gulp --gulpfile ./bulid/gulpfile.babel.js dev",   
+    "start": "sudo npm install && sudo gulp --gulpfile ./bulid/gulpfile.babel.js dev",
     "dev": "gulp --gulpfile ./bulid/gulpfile.babel.js dev",
     "test": "test"
   },
@@ -24,6 +24,8 @@
     "co": "^4.6.0",
     "del": "^2.2.0",
     "eslint": "^2.7.0",
+    "eslint-config-airbnb": "^6.2.0",
+    "eslint-plugin-react": "^4.3.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "fs": "0.0.2",
