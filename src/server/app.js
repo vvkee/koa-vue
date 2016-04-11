@@ -23,11 +23,11 @@ onerror(app)
 app.use(convert((koaStatic(path.join(__dirname, 'public')))))
 
 ejs(app, {
-       root: path.join(__dirname, 'views/pages'),
-     layout: false,
+    root: path.join(__dirname, 'views/pages'),
+    layout: false,
     viewExt: 'html',
-      cache: false,
-      debug: true
+    cache: false,
+    debug: true
 })
 
 app.use(async (ctx, next) => {
