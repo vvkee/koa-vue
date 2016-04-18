@@ -1,7 +1,7 @@
 {
-  "name": "crm",
+  "name": "koaVue",
   "version": "1.0.0",
-  "description": "crm",
+  "description": "koa2 vue",
   "main": "index.js",
   "scripts": {
     "start": "sudo npm install && sudo gulp --gulpfile ./bulid/gulpfile.babel.js dev",
@@ -12,7 +12,7 @@
   "keywords": [
     "crm"
   ],
-  "author": "56hell",
+  "author": "weizongqi",
   "license": "ISC",
   "dependencies": {
     "babel-cli": "^6.7.5",
