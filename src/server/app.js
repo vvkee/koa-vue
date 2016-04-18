@@ -8,19 +8,24 @@ import koaStatic from 'koa-static'
 import convert from 'koa-convert'
 import path from 'path'
 import compress from 'koa-compress'
+import favicon from 'koa-favicon'
 
 import config from './config'
+
 
 const app = new Koa()
 
 // 错误处理
 app.on('error', (err, ctx) => {
     console.log(err)
+
+    log.error('server error', err, ctx);
 })
 onerror(app)
 
 // 静态模板
 app.use(convert((koaStatic(path.join(__dirname, 'public')))))
+app.use(favicon(__dirname + '/public/static/favicon.ico'))
 
 ejs(app, {
     root: path.join(__dirname, 'views/pages'),
@@ -43,5 +48,5 @@ app.use(compress())
 app
   .use(config.router.routes())
   .use(config.router.allowedMethods())
-
-app.listen(3377)
+console.log('app000', app)
+export { app }

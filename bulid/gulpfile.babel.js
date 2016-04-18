@@ -1,31 +1,34 @@
 'use strict';
-import        gulp from 'gulp'
-import     webpack from 'webpack'
-
-import         del from 'del'
-import       gutil from 'gulp-util'
-import      rename from 'gulp-rename'
-import     nodemon from 'gulp-nodemon'
+import gulp from 'gulp'
 import runSequence from 'gulp-sequence'
-
-import      eslint from 'gulp-eslint'
-import eslint_formatter from 'eslint-friendly-formatter'
-import      uglify from 'gulp-uglify'
-import      concat from 'gulp-concat'
-
-import webpackConfig from './webpack.config'
+import webpackConfigDev from './webpack.dev.config'
+import webpackConfigPro from './webpack.pro.config'
 
 import path from 'path'
 
+const rootPath = path.join(process.cwd(), '..')
 const server = path.join(process.cwd(), '..', '/src/server')
 const client = path.join(process.cwd(), '..', '/src/client')
 const assets = path.join(process.cwd(), '..', '/assets')
 
 import task from './task'
 
+task({
+    gulp: gulp,
+    path: {
+        server: server,
+        client: client,
+        assets: assets,
+        root: rootPath
+    },
+    webpack: {
+        dev: webpackConfigDev,
+        pro: webpackConfigPro
+    }
+})
 
 /**
- * 默认命令
+ * 开发环境
  * @param  {[type]} 'default' [description]
  * @param  {[type]} (cb       [description]
  * @return {[type]}           [description]
@@ -35,42 +38,15 @@ gulp.task('dev', (cb) => {
 })
 
 
-// 后端任务（开发）
-task.serverDev({
-       gulp: gulp,
-    pluging: {
-                del: del,
-              gutil: gutil,
-             eslint: eslint,
-   eslint_formatter: eslint_formatter,
-            nodemon: nodemon,
-        runSequence: runSequence
-    },
-       path: {
-           server: server,
-           client: client,
-           assets: assets
-       }
-})
+/**
+ * 编译环境
+ * @param  {[type]} 'pro' [description]
+ * @param  {[type]} (cb   [description]
+ * @return {[type]}       [description]
+ */
+gulp.task('pro', (cb) => {
+    runSequence(['server_pro', 'client_pro'], cb)
+});
 
-// 前端任务（开发）
-task.clientDev({
-       gulp: gulp,
-    pluging: {
-                del: del,
-              gutil: gutil,
-             rename: rename,
-            webpack: webpack,
-        runSequence: runSequence
-    },
-       path: {
-           server: server,
-           client: client,
-           assets: assets
-       },
-     config: {
-         webpackConfig: webpackConfig
-     }
-})
 
 export default gulp

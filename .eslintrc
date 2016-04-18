@@ -67,7 +67,7 @@
     "consistent-this": 0,
     "constructor-super": 2,
     "curly": [2, "multi-line"],
-    "indent": [2, 4],//缩进风格
+    "indent": ["error", 4],//缩进风格
     "default-case": 0,
     "dot-location": [2, "property"],
     "dot-notation": 0,
